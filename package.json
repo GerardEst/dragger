@@ -4,7 +4,7 @@
   "description": "Drag elements and detect collisions between them",
   "main": "build/dragger-min.js",
   "scripts": {
-    "build": "esbuild dragger.js --bundle --minify --format=esm --outfile=dragger-min.js",
+    "build": "esbuild dragger.js --bundle --minify --format=esm --outfile=dragger-min.js"
   },
   "repository": {
     "type": "git",
