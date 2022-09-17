@@ -1,0 +1,22 @@
+{
+  "name": "@gerardest/dragger",
+  "version": "1.0.0",
+  "description": "Drag elements and detect collisions between them",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GerardEst/dragger.git"
+  },
+  "keywords": [
+    "drag"
+  ],
+  "author": "GerardEst",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GerardEst/dragger/issues"
+  },
+  "homepage": "https://github.com/GerardEst/dragger#readme"
+}
