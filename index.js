@@ -7,6 +7,8 @@ export function dragger(elements){
     arrayOfDraggables = elements.length > 0 ? [...elements] : [elements]
     initGeneralEvents()
     for(let element of arrayOfDraggables){
+        // Prevent conflicts when dragging browser predefined draggable elements
+        element.ondragstart = () => false;
         resetElementPosition(element)
         addTouchEvents(element)
         addMouseEvents(element)
@@ -91,7 +93,7 @@ function move(moving, {x,y,shift,ctrl}){
     consoler(testing, `Moving: ${x}:${y} - ${shift ? 'shift' : 'no shift'}, ${ctrl ? 'ctrl' : 'no ctrl'}`)
 
     moving.style.left = x - moving.getAttribute('shiftX') + 'px'
-    moving.style.top = y - moving.getAttribute('shiftY') + 'px'
+    moving.style.top = y - moving.getAttribute('shiftY') + document.querySelector('html').scrollTop + 'px'
 
     const notYou = arrayOfDraggables.filter( drag => drag !== moving )
 
