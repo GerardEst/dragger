@@ -1,6 +1,3 @@
-const testing = true
-import { consoler } from './utils.js'
-
 let arrayOfDraggables = []
 
 export function dragger(elements){
@@ -79,7 +76,7 @@ function addMouseEvents(element){
 
 
 function startDrag(element, {x,y,shift,ctrl}){
-    consoler(testing, `Started: ${x}:${y} - ${shift ? 'shift' : 'no shift'}, ${ctrl ? 'ctrl' : 'no ctrl'}`)
+    console.log(`Started: ${x}:${y} - ${shift ? 'shift' : 'no shift'}, ${ctrl ? 'ctrl' : 'no ctrl'}`)
     
     element.setAttribute('dragging', '')
     element.style.zIndex = 1000
@@ -90,7 +87,7 @@ function startDrag(element, {x,y,shift,ctrl}){
 }
 
 function move(moving, {x,y,shift,ctrl}){    
-    consoler(testing, `Moving: ${x}:${y} - ${shift ? 'shift' : 'no shift'}, ${ctrl ? 'ctrl' : 'no ctrl'}`)
+    console.log(`Moving: ${x}:${y} - ${shift ? 'shift' : 'no shift'}, ${ctrl ? 'ctrl' : 'no ctrl'}`)
 
     moving.style.left = x - moving.getAttribute('shiftX') + 'px'
     moving.style.top = y - moving.getAttribute('shiftY') + document.querySelector('html').scrollTop + 'px'
@@ -132,7 +129,7 @@ function move(moving, {x,y,shift,ctrl}){
 }
 
 function stopDragging(element, {x,y,shift,ctrl}){
-    consoler(testing, `Stopped: ${x}:${y} - ${shift ? 'shift' : 'no shift'}, ${ctrl ? 'ctrl' : 'no ctrl'}`)
+    console.log(`Stopped: ${x}:${y} - ${shift ? 'shift' : 'no shift'}, ${ctrl ? 'ctrl' : 'no ctrl'}`)
     
     element.style.zIndex = 'unset'
     element.removeAttribute('dragging')
