@@ -1,5 +1,8 @@
 let arrayOfDraggables = []
 
+/** Usar un proxy para que cuando se añade algo a arrayOfDraggables
+ * ya automaticamente haga reset,addTouch,addMouse.. ???
+ */
 export function dragger(elements){
     arrayOfDraggables = elements.length > 0 ? [...elements] : [elements]
     initGeneralEvents()
@@ -26,7 +29,10 @@ function initGeneralEvents(){
 
 export function add(element){
     arrayOfDraggables.push(element)
-    prepareElement(element)
+    element.ondragstart = () => false;
+    resetElementPosition(element)
+    addTouchEvents(element)
+    addMouseEvents(element)
 }
 
 function resetElementPosition(element){
