@@ -1,9 +1,9 @@
 let arrayOfDraggables = []
 
-/** Usar un proxy para que cuando se añade algo a arrayOfDraggables
- * ya automaticamente haga reset,addTouch,addMouse.. ???
- */
 export function dragger(elements){
+    if(!Array.isArray(elements)) throw new Error('elements must be in a NodeList')
+    if(!elements instanceof NodeList) throw new Error('elements must be a NodeList')
+    
     arrayOfDraggables = elements.length > 0 ? [...elements] : [elements]
     initGeneralEvents()
     for(let element of arrayOfDraggables){
@@ -98,11 +98,10 @@ function move(moving, {x,y,shift,ctrl}){
     moving.style.left = x - moving.getAttribute('shiftX') + 'px'
     moving.style.top = y - moving.getAttribute('shiftY') + document.querySelector('html').scrollTop + 'px'
 
-    const notYou = arrayOfDraggables.filter( drag => drag !== moving )
-
     if(dragger.drag) dragger.drag({element: moving,x,y,shift,ctrl})
-
-    for(let el of notYou){
+    
+    const allElementsExceptCurrentlyDragging = arrayOfDraggables.filter( drag => drag !== moving )
+    for(let el of allElementsExceptCurrentlyDragging){
         
         const el_x = el.getBoundingClientRect().left
         const el_y = el.getBoundingClientRect().top
