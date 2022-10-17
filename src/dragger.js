@@ -1,7 +1,6 @@
 let arrayOfDraggables = []
 
 export function dragger(elements){
-    if(!Array.isArray(elements)) throw new Error('elements must be in a NodeList')
     if(!elements instanceof NodeList) throw new Error('elements must be a NodeList')
     
     arrayOfDraggables = elements.length > 0 ? [...elements] : [elements]

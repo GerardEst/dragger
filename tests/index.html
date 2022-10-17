@@ -16,22 +16,16 @@
 </head>
 <body>
 
-    <div class="drag">O</div>
-    <div class="drag">O</div>
-    <div class="drag">O</div>
-    <div class="drag">O</div>
-    <img class="drag" src="./image.jpg">
-
-    <div id="singleDrag" class="drag">Single</div>
+    <div class="drag" style="top:0; left: 0">El1</div>
+    <div class="drag" style="top:50px; left: 50px">El2</div>
+    <div class="drag" style="top:100px; left: 100px">El3</div>
+    <div class="drag" style="top:150px; left: 150px">El4</div>
     
     <script type="module">
         import { dragger } from '../src/dragger.js'
 
         let elementsToDrag = document.querySelectorAll('.drag')
-        console.log(elementsToDrag)
-        //let elementToDrag = document.querySelector('#singleDrag')
         dragger(elementsToDrag)
-        //dragger(elementToDrag)
     </script>
 </body>
 </html>
