@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .drag{
+            width: 50px;
+            height: 50px;
+            background-color: gray;
+        }
+    </style> 
+</head>
+<body>
+
+    <div class="drag">O</div>
+    <div class="drag">O</div>
+    <div class="drag">O</div>
+    <div class="drag">O</div>
+    <img class="drag" src="./image.jpg">
+
+    <div id="singleDrag" class="drag">Single</div>
+    
+    <script type="module">
+        import { dragger } from '../src/dragger.js'
+
+        let elementsToDrag = document.querySelectorAll('.drag')
+        console.log(elementsToDrag)
+        //let elementToDrag = document.querySelector('#singleDrag')
+        dragger(elementsToDrag)
+        //dragger(elementToDrag)
+    </script>
+</body>
+</html>
