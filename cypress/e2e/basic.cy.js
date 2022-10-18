@@ -1,6 +1,6 @@
 describe('testing page is ready', () => {
   it('is opened in localhost', () => {
-    cy.visit('http://127.0.0.1:5501/tests/')
+    cy.visit('/')
   })
   it('has elements to drag', () => {
     cy.get('.drag')
@@ -9,19 +9,19 @@ describe('testing page is ready', () => {
 
 describe('simple drags work', () => {
   it('receives and removes dragging tag', () => {
-    cy.get('.drag').first()
+    cy.get('.drag').first().as('draggableElement')
       .trigger('mousedown', {position: 'topLeft'})
       .should('have.attr', 'dragging')
-    cy.get('.drag').first() 
+    cy.get('@draggableElement') 
       .trigger('mouseup')
       .should('not.have.attr', 'dragging')
   })
   it('visually drags', () => {
-    cy.get('.drag').first()
+    cy.get('.drag').first().as('draggableElement')
       .trigger('mousedown', {position: 'topLeft'})
       .trigger('mousemove', {clientX: 50, clientY: 0})
       .trigger('mouseup')
-    cy.get('.drag').first()
+    cy.get('@draggableElement')
       .should('have.css', 'left', '50px')
   })
 })
@@ -32,7 +32,7 @@ describe('collisions work', () => {
       .trigger('mousedown', {position: 'topLeft'})
       .trigger('mousemove', {clientX: 170, clientY: 170})
       .trigger('mouseup')
-    cy.get('.drag').last()
+      cy.get('.drag').last()
       .should('have.attr', 'colliding')
   })
 })

@@ -1,7 +1,5 @@
 export default {
   e2e: {
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
+    baseUrl: 'http://localhost:5501/tests'
   },
 };

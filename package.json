@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "esbuild src/dragger.js --drop:console --bundle --minify --format=esm --outfile=build/dragger-min.js",
-    "test": "mocha test -r chai/register-expect.js"
+    "test": "cypress open"
   },
   "repository": {
     "type": "git",
