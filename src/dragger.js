@@ -15,24 +15,16 @@ export function dragger(elements){
     } 
 }
 
-function initGeneralEvents(){
+function initGeneralEvents() {
     document.addEventListener('mousemove', ev => {
         const draggedElement = document.querySelector('[dragging]')
-        if(draggedElement) move(draggedElement, {
+        if (draggedElement) move(draggedElement, {
             x: ev.clientX,
             y: ev.clientY,
             shift: ev.shiftKey,
             ctrl: ev.ctrlKey
         })
     })
-}
-
-export function add(element){
-    arrayOfDraggables.push(element)
-    element.ondragstart = () => false;
-    resetElementPosition(element)
-    addTouchEvents(element)
-    addMouseEvents(element)
 }
 
 function resetElementPosition(element){
@@ -54,7 +46,7 @@ function addTouchEvents(element){
         })
     })
     element.addEventListener('touchend', ev => {
-        stopDragging(ev.target, {
+        stopDrag(ev.target, {
             x: ev.changedTouches[0].clientX,
             y: ev.changedTouches[0].clientY
         })
@@ -70,26 +62,13 @@ function addMouseEvents(element){
         })
     })
     element.addEventListener('mouseup', ev => {
-        stopDragging(element, {
+        stopDrag(element, {
             x: ev.clientX,
             y: ev.clientY,
             shift: ev.shiftKey,
             ctrl: ev.ctrlKey
         })
     })
-}
-
-
-
-function startDrag(element, {x,y,shift,ctrl}){
-    console.log(`Started: ${x}:${y} - ${shift ? 'shift' : 'no shift'}, ${ctrl ? 'ctrl' : 'no ctrl'}`)
-    
-    element.setAttribute('dragging', '')
-    element.style.zIndex = 1000
-    element.setAttribute('shiftX', x - element.getBoundingClientRect().left)
-    element.setAttribute('shiftY', y - element.getBoundingClientRect().top)
-
-    if(dragger.startDrag) dragger.startDrag({element,x,y,shift,ctrl})
 }
 
 function move(moving, {x,y,shift,ctrl}){    
@@ -134,7 +113,26 @@ function move(moving, {x,y,shift,ctrl}){
     }
 }
 
-function stopDragging(element, {x,y,shift,ctrl}){
+export function add(element){
+    arrayOfDraggables.push(element)
+    element.ondragstart = () => false;
+    resetElementPosition(element)
+    addTouchEvents(element)
+    addMouseEvents(element)
+}
+
+export function startDrag(element, {x,y,shift,ctrl}){
+    console.log(`Started: ${x}:${y} - ${shift ? 'shift' : 'no shift'}, ${ctrl ? 'ctrl' : 'no ctrl'}`)
+    
+    element.setAttribute('dragging', '')
+    element.style.zIndex = 1000
+    element.setAttribute('shiftX', x - element.getBoundingClientRect().left)
+    element.setAttribute('shiftY', y - element.getBoundingClientRect().top)
+
+    if(dragger.startDrag) dragger.startDrag({element,x,y,shift,ctrl})
+}
+
+export function stopDrag(element, {x,y,shift,ctrl}){
     console.log(`Stopped: ${x}:${y} - ${shift ? 'shift' : 'no shift'}, ${ctrl ? 'ctrl' : 'no ctrl'}`)
     
     element.style.zIndex = 'unset'
