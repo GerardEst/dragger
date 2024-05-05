@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: tomato;
+        }
+        div.colliding {
+            background-color: salmon;
+        }
+    </style>
+    <script type="module">
+        import {dragger} from '../src/dragger.js'
+
+        const el = document.querySelectorAll("div");
+        dragger(el);
+    </script>
+    
+</head>
+<body>
+    <div style="left: 20%"></div>
+    <div style="left: 50%"></div>
+    <div style="left: 80%"></div>
+</body>
+</html>

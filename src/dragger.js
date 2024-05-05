@@ -94,7 +94,8 @@ function move(moving, {x,y,shift,ctrl}){
         const movingEl_height = moving.getBoundingClientRect().height
         
         if(movingEl_x + movingEl_width >= el_x && movingEl_x <= el_x + el_width && movingEl_y + movingEl_height >= el_y && movingEl_y <= el_y + el_height){
-            if(!el.hasAttribute('colliding')){ 
+            console.log('colision!')
+            if (!el.hasAttribute('colliding')) { 
                 el.setAttribute('colliding','')
                 if(dragger.onCollide) dragger.onCollide({
                         collider: moving, 
